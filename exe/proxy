@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# -*- mode: Ruby -*-
+
+require 'quick_and_ruby'
+
+options = QuickAndRuby::Proxy::ArgParser.new(ARGV).parse
+QuickAndRuby::Proxy::Proxy.new(options).start
