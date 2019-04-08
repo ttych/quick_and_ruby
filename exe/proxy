@@ -3,5 +3,7 @@
 
 require 'quick_and_ruby'
 
-options = QuickAndRuby::Proxy::ArgParser.new(ARGV).parse
-QuickAndRuby::Proxy::Proxy.new(options).start
+env_options = QuickAndRuby::Proxy::EnvParser.new.parse
+arg_options = QuickAndRuby::Proxy::ArgParser.new(ARGV).parse
+QuickAndRuby::Proxy::Proxy.new(env_options.merge(arg_options))
+                          .start

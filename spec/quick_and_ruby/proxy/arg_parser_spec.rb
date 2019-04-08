@@ -10,9 +10,7 @@ RSpec.describe QuickAndRuby::Proxy::ArgParser do
                           port: 8080 }
 
       parsed_options = subject.parse
-      default_options.each do |option, default_value|
-        expect(parsed_options.send(option)).to eq(default_value)
-      end
+      expect(default_options).to eq(parsed_options)
     end
   end
 end

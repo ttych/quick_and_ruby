@@ -2,9 +2,6 @@ require 'optparse'
 require 'optparse/time'
 require 'ostruct'
 
-# Usage is
-# --dowstream
-# -v --verbose
 module QuickAndRuby
   module Proxy
     # service
@@ -13,11 +10,9 @@ module QuickAndRuby
     class ArgParser
       def initialize(argv)
         @argv = argv
-        @options = OpenStruct.new(
-          verbose: false,
-          bind: '0.0.0.0',
-          port: 8080
-        )
+        @options = { verbose: false,
+                     bind: '0.0.0.0',
+                     port: 8080 }
       end
 
       def parse
@@ -37,32 +32,32 @@ module QuickAndRuby
           opts.separator 'Options:'
 
           opts.on('-v', '--[no-]verbose', 'Run verbosely') do |v|
-            options.verbose = v
+            options[:verbose] = v
           end
 
           opts.on('-u', '--user USER:PASSWORD',
                   'specify USER') do |user|
-            options.user = user
+            options[:user] = user
           end
 
           opts.on('-H', '--proxy-host HOST',
                   'specify proxy HOST to use') do |host|
-            options.proxy_host = host
+            options[:proxy_host] = host
           end
 
           opts.on('-P', '--proxy-port PORT',
                   'specify proxy PORT to use') do |port|
-            options.proxy_port = port
+            options[:proxy_port] = port
           end
 
           opts.on('-b', '--bind IP',
                   'specify IP to bind on') do |ip|
-            options.bind = ip
+            options[:bind] = ip
           end
 
           opts.on('-p', '--port PORT',
                   'specify PORT to listen on') do |port|
-            options.port = port
+            options[:port] = port
           end
 
           opts.on_tail('-h', '--help', 'Show this message') do

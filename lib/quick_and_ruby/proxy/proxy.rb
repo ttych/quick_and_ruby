@@ -40,16 +40,16 @@ module QuickAndRuby
       end
 
       def base_proxy_options
-        { BindAddress: options.bind,
-          Port: options.port }
+        { BindAddress: options[:bind],
+          Port: options[:port] }
       end
 
       def remote_proxy_options
-        if options.proxy_host
+        if options[:proxy_host]
           uri = OpenStruct.new(
-            userinfo: options.user,
-            host: options.proxy_host,
-            port: options.proxy_port
+            userinfo: options[:user],
+            host: options[:proxy_host],
+            port: options[:proxy_port]
           )
           return { ProxyURI: uri }
         end
