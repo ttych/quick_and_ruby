@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require 'optparse'
 require 'optparse/time'
-require 'ostruct'
 
 module QuickAndRuby
   module Proxy
