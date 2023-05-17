@@ -2,7 +2,13 @@
 
 Gem to group utilities in ruby.
 
-## Usage
+## install
+
+```ruby
+gem install quick_and_ruby
+```
+
+## bins
 
 ### proxy
 
@@ -19,32 +25,42 @@ datetime -o <offset> -i <incr> -f "<format>" <from>|now <to>|now
 datetime -o <offset> -i <incr> -f "<format>" <from>|now
 ```
 
-## Installation
+### yaml2json
 
-Add this line to your application's Gemfile:
+Convert yaml formated string, file or stdin to json format.
 
-```ruby
-gem 'quick_and_ruby'
+usage:
+
+``` shell
+yaml2json file.json
+# ... generates file.json
+
+yaml2json 'msg: test'
+# {
+#   "msg": "test"
+# }
+
+echo 'msg: test' | yaml2json
+# {
+#   "msg": "test"
+# }
 ```
 
-And then execute:
+### json2yaml
 
-    $ bundle
+Convert json formated string, file or stdin to yaml format.
 
-Or install it yourself as:
+usage:
 
-    $ gem install quick_and_ruby
+``` shell
+json2yaml file.json
+# ... generates file.yaml
 
-## Development
+json2yaml '{"msg": "test"}'
+# ---
+# msg: test
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the QuickAndRuby project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/quick_and_ruby/blob/master/CODE_OF_CONDUCT.md).
+echo '{"msg": "test"}' | json2yaml
+# ---
+# msg: test
+```
