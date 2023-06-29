@@ -16,7 +16,7 @@ module QuickAndRuby
       DEFAULT_INCR = '1d'
       DEFAULT_ZONE = DateTime.now.zone
 
-      attr_reader :date_begin, :date_end, :incr, :format, :zone
+      attr_accessor :date_begin, :date_end, :incr, :format, :zone
 
       def initialize(date_begin: DateTime.now, date_end: nil,
                      incr: DEFAULT_INCR,
@@ -39,8 +39,17 @@ module QuickAndRuby
 
       class << self
         def load(argv = ARGV)
+          local_argv = argv.clone
           options = new
-          parser(options).parse!(argv.clone)
+          parser(options).parse!(local_argv)
+          raise "unexpected arguments in #{local_arg}, see usage" if local_argv.size > 2
+
+          if local_argv.size > 0
+            date_1, date_2 = local_argv
+            options.date_begin = date_1
+            options.date_end = date_2
+          end
+
           puts options
           options
         end

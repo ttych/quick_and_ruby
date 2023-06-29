@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
-require "quick_and_ruby/date"
+require 'quick_and_ruby/date'
 
-RSpec.describe "QuickAndRuby::Date::DateRangeParser" do
+# unit test for QuickAndRuby::Date::DateTimeCli
+RSpec.describe QuickAndRuby::Date::DateTimeArgs do
+  let(:argv) { [] }
+
+  it 'can be loaded from argv' do
+    options = described_class.load(argv)
+  end
+
   #    let(:argv) { [] }
   #   subject { described_class.new(argv) }
 
@@ -67,4 +74,5 @@ RSpec.describe "QuickAndRuby::Date::DateRangeParser" do
   #       end.to output(expected_version_output).to_stdout
   #     end
   #   end
+
 end

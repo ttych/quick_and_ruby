@@ -9,9 +9,10 @@ module QuickAndRuby
     #   - datetime -z <zone> -i <incr> -f "<format>" <from>|now <to>|now
     #   - datetime -z <zone> -i <incr> -f "<format>" <from>|now
     class DateTimeCli
-      def initialize(argv = ARGV, args_loader = QuickAndRuby::Date::DateTimeArgs)
-        @argv = argv || []
-        @args_loader = args_loader
+      attr_reader :args
+
+      def initialize(args: DateTimeArgs.ew(ARGV))
+        @args = args
       end
 
       def run
@@ -20,6 +21,7 @@ module QuickAndRuby
       end
 
       def run_range
+        DateRange.new(
         puts :RUN_RANGE
         time_cursor = args.date_begin
         while time_cursor <= args.date_end
@@ -31,14 +33,6 @@ module QuickAndRuby
       def run_incr
         puts :RUN_INCR
       end
-
-      def args
-        @args ||= args_loader.load(argv)
-      end
-
-      private
-
-      attr_reader :argv, :args_loader
     end
   end
 end

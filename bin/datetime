@@ -3,4 +3,4 @@
 
 require "quick_and_ruby/date"
 
-QuickAndRuby::Date::DateTimeCli.new(ARGV).run
+QuickAndRuby::Date::DateTimeCli.new().run
