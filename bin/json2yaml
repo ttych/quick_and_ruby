@@ -10,11 +10,11 @@ end
 
 from = ARGV[0]
 if from && File.exist?(from)
-  to = ARGV[1] || from.chomp('.json') + '.yaml'
+  to = ARGV[1] || "#{from.chomp(".json")}.yaml"
 
   File.write(to, json2yaml(File.read(from)))
 elsif from
   puts json2yaml(from)
-elsif not STDIN.tty? and not STDIN.closed?
-  puts json2yaml(STDIN.read)
+elsif !$stdin.tty? && !$stdin.closed?
+  puts json2yaml($stdin.read)
 end
