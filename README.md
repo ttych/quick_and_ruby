@@ -1,43 +1,66 @@
 # QuickAndRuby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/quick_and_ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
+Gem to group utilities in ruby.
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
+## install
 
 ```ruby
-gem 'quick_and_ruby'
+gem install quick_and_ruby
 ```
 
-And then execute:
+## bins
 
-    $ bundle
+### proxy
 
-Or install it yourself as:
+### datetime
 
-    $ gem install quick_and_ruby
+Used to manipulate date:
+- allow to compute all increment between 2 dates.
+- allow to compute a date starting form another/now.
 
-## Usage
+Usage:
+``` shell
+datetime -o <offset> -i <incr> -f "<format>" <from>|now <to>|now
 
-TODO: Write usage instructions here
+datetime -o <offset> -i <incr> -f "<format>" <from>|now
+```
 
-## Development
+### yaml2json
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Convert yaml formated string, file or stdin to json format.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+usage:
 
-## Contributing
+``` shell
+yaml2json file.json
+# ... generates file.json
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/quick_and_ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+yaml2json 'msg: test'
+# {
+#   "msg": "test"
+# }
 
-## License
+echo 'msg: test' | yaml2json
+# {
+#   "msg": "test"
+# }
+```
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+### json2yaml
 
-## Code of Conduct
+Convert json formated string, file or stdin to yaml format.
 
-Everyone interacting in the QuickAndRuby project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/quick_and_ruby/blob/master/CODE_OF_CONDUCT.md).
+usage:
+
+``` shell
+json2yaml file.json
+# ... generates file.yaml
+
+json2yaml '{"msg": "test"}'
+# ---
+# msg: test
+
+echo '{"msg": "test"}' | json2yaml
+# ---
+# msg: test
+```

@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'json'
+require 'yaml'
+
+def yaml2json(str)
+  JSON.pretty_generate(YAML.load(str))
+end
+
+from = ARGV[0]
+if from && File.exist?(from)
+  to = ARGV[1] || from.chomp('.yaml').chomp('.yml') + '.json'
+
+  File.write(to, yaml2json(File.read(from)))
+elsif from
+  puts yaml2json(from)
+elsif not STDIN.tty? and not STDIN.closed?
+  puts yaml2json(STDIN.read)
+end
