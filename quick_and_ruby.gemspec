@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/ttych/quick_and_ruby'
   spec.license       = 'MIT'
 
-  spec.required_ruby_version = '> 2.6'
+  spec.required_ruby_version = '> 2.7'
 
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = 'https://rubygems.org'
@@ -27,6 +27,8 @@ Gem::Specification.new do |spec|
     raise 'RubyGems 2.0 or newer is required to protect against ' \
           'public gem pushes.'
   end
+
+  spec.metadata['rubygems_mfa_required'] = 'true'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem
