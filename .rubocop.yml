@@ -4,7 +4,7 @@ require:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
 
 Layout/LineLength:
   Max: 100
@@ -21,6 +21,14 @@ Metrics/MethodLength:
 #   Enabled: true
 #   EnforcedStyle: double_quotes
 
+Style/Documentation:
+  Enabled: false
+
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
+
+# RSpec
+
+RSpec/MultipleExpectations:
+  Max: 2

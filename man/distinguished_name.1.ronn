@@ -1,0 +1,26 @@
+distinguished_name(1) -- utility to manipulate DN formated string
+=================================================================
+
+## SYNOPSIS
+
+`distinguished_name` <dn>
+`distinguished_name` `-r`|`--reverse` <dn>
+
+## DESCRIPTION
+
+**distinguished_name** is a simple command-line tool for modifying a dn string.
+
+## FILES
+
+No files are used for the moment.
+
+## OPTIONS
+
+* `-r`, `--reverse`:
+  Do a reverse of each attribute in the distinguished name (dn).
+
+## EXAMPLES
+
+Print in reverse order the dn:
+
+    $ distinguished_name --reverse "C=CountryCode, ST=State, CN=CommonName"
