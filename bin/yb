@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'optparse'
+require 'quick_and_ruby/data'
+
+option_parser = OptionParser.new do |opts|
+  executable_name = File.basename($PROGRAM_NAME)
+  opts.banner = "Interactively browse a Yaml file\n" \
+                "\n" \
+                "Usage: #{executable_name} [yaml_file]"
+end
+option_parser.parse!
+
+yaml_context = QuickAndRuby::Data::Context.from_yaml(ARGF.read)
+browser = QuickAndRuby::Data::Browser.new(yaml_context)
+browser.main

@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'optparse'
+require 'quick_and_ruby/data'
+
+option_parser = OptionParser.new do |opts|
+  executable_name = File.basename($PROGRAM_NAME)
+  opts.banner = "Interactively browse a JSON file\n" \
+                "\n" \
+                "Usage: #{executable_name} [json_file]"
+end
+option_parser.parse!
+
+json_context = QuickAndRuby::Data::Context.from_json(ARGF.read)
+browser = QuickAndRuby::Data::Browser.new(json_context)
+browser.main
