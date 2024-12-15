@@ -5,12 +5,12 @@ require 'json'
 require 'yaml'
 
 def yaml2json(str)
-  JSON.pretty_generate(YAML.safe_load(str))
+  JSON.pretty_generate(YAML.safe_load(str, aliases: true))
 end
 
 from = ARGV[0]
 if from && File.exist?(from)
-  to = ARGV[1] || "#{from.chomp(".yaml").chomp(".yml")}.json"
+  to = ARGV[1] || "#{from.chomp('.yaml').chomp('.yml')}.json"
 
   File.write(to, yaml2json(File.read(from)))
 elsif from

@@ -10,7 +10,7 @@ end
 
 from = ARGV[0]
 if from && File.exist?(from)
-  to = ARGV[1] || "#{from.chomp(".json")}.yaml"
+  to = ARGV[1] || "#{from.chomp('.json')}.yaml"
 
   File.write(to, json2yaml(File.read(from)))
 elsif from
