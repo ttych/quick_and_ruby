@@ -6,6 +6,9 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 2.7
 
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+
 Layout/LineLength:
   Max: 100
 
@@ -14,21 +17,29 @@ Metrics/BlockLength:
     - quick_and_ruby.gemspec
     - spec/**/*.rb
 
+Metrics/ClassLength:
+  Exclude:
+    - test/**/*.rb
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
 Metrics/MethodLength:
   Max: 25
+
+Style/Documentation:
+  Enabled: false
 
 # Style/StringLiterals:
 #   Enabled: true
 #   EnforcedStyle: double_quotes
 
-Style/Documentation:
-  Enabled: false
+# Style/StringLiteralsInInterpolation:
+#   Enabled: true
+#   EnforcedStyle: double_quotes
 
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
-
-# RSpec
+RSpec/ExampleLength:
+  Max: 10
 
 RSpec/MultipleExpectations:
   Max: 2

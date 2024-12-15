@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "quick_and_ruby/date"
+require 'quick_and_ruby/date'
 
-RSpec.describe "QuickAndRuby::Date::DateRangeParser" do
+RSpec.describe 'QuickAndRuby::Date::DateRangeParser' do
   #    let(:argv) { [] }
   #   subject { described_class.new(argv) }
 

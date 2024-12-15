@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe QuickAndRuby::Proxy::EnvParser do
   subject { described_class.new(env) }
 

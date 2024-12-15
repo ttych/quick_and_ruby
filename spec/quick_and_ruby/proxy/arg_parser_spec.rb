@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe QuickAndRuby::Proxy::ArgParser do
   subject { described_class.new(argv) }
 

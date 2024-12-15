@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require_relative 'distinguished_name/attribute'
+require_relative 'distinguished_name/rfc_format'
+require_relative 'distinguished_name/openssl_format'
+
 module QuickAndRuby
   class DistinguishedName
     attr_reader :attributes
@@ -8,51 +12,54 @@ module QuickAndRuby
       @attributes = attributes
     end
 
-    def to_s
-      attributes.map(&:to_s).join(',')
+    def to_s(format: :rfc)
+      formatter = get_format(format)
+      formatter.join(attributes)
     end
-
-    def size
-      @attributes.size
-    end
-    alias length size
 
     def reverse
       self.class.new(attributes.reverse)
     end
 
-    def self.from_string(dn_str)
-      attributes = dn_str.split(/(?<!\\),/).map do |dn_component|
-        unless (match = /^([^=]+)=(.*)$/.match(dn_component.strip))
-          raise "#{dn_component} is not a valid DistinguishedName component"
-        end
+    def size
+      attributes.size
+    end
+    alias length size
 
-        Attribute.new(*match.captures)
-      end
-
-      new(attributes)
+    def get_format(label = :rfc)
+      self.class.get_format(label)
     end
 
-    class Attribute
-      # DC 	domainComponent
-      # CN 	commonName
-      # OU 	organizationalUnitName
-      # O 	organizationName
-      # STREET 	streetAddress
-      # L 	localityName
-      # ST 	stateOrProvinceName
-      # C 	countryName
-      # UID 	userid
+    class << self
+      def from_s(dn_str, format: nil)
+        return new if !dn_str || dn_str.empty?
 
-      attr_reader :attribute, :value
+        formatter ||= get_format(format) if format
+        formatter ||= openssl_format if openssl_format.recognize?(dn_str)
+        formatter ||= rfc_format
 
-      def initialize(attribute, value)
-        @attribute = attribute
-        @value = value
+        attributes = formatter.split(dn_str)
+
+        new(attributes)
       end
 
-      def to_s
-        "#{attribute}=#{value}"
+      def rfc_format
+        get_format(:rfc)
+      end
+
+      def openssl_format
+        get_format(:openssl)
+      end
+
+      def get_format(label = :rfc)
+        case label.to_sym
+        when :rfc
+          RfcFormat.new
+        when :openssl
+          OpensslFormat.new
+        else
+          raise ArgumentError, "Unsupported format #{label}"
+        end
       end
     end
   end

@@ -20,15 +20,15 @@ end
 
 option_parser.parse!(argv)
 if argv.empty?
-  STDERR.puts 'error: you must supply a distinguished_name'
-  STDERR.puts
-  STDERR.puts option_parser.help
+  warn 'error: you must supply a distinguished_name'
+  $stderr.puts
+  warn option_parser.help
   exit 2
 else
-  distinguished_name = argv.clone.join(" ")
+  distinguished_name = argv.clone.join(' ')
 end
 
-dn = QuickAndRuby::DistinguishedName.from_string(distinguished_name)
+dn = QuickAndRuby::DistinguishedName.from_s(distinguished_name)
 dn = dn.reverse if options[:reverse]
 
 puts dn.to_s
