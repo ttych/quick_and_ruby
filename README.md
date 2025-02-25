@@ -8,7 +8,7 @@ Gem to group utilities in ruby.
 gem install quick_and_ruby
 ```
 
-## bins
+## bin's
 
 ### proxy
 
@@ -23,6 +23,30 @@ Usage:
 datetime -o <offset> -i <incr> -f "<format>" <from>|now <to>|now
 
 datetime -o <offset> -i <incr> -f "<format>" <from>|now
+```
+
+### epoch
+
+Convert epoch and time.
+
+Usage:
+
+``` shell
+# time to epoch
+epoch 2025-01-01T01:01:01.000Z
+1735693261
+
+# epoch to time UTC
+epoch -u 1735693261
+2025-01-01T01:01:01.000Z
+
+# epoch to time (local time zone)
+epoch 1735693261
+2025-01-01T02:01:01.000+01:00
+
+# time to epoch millis
+epoch -m 2025-01-01T01:01:01.123Z
+1735693261123
 ```
 
 ### yaml2json
