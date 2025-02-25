@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'quick_and_ruby/time'
+
+QuickAndRuby::Time::EpochCli.new.run
