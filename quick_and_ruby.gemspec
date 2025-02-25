@@ -42,13 +42,15 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^#{spec.bindir}/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'webrick',  '~> 1.9', '>= 1.9.1'
+
   spec.add_development_dependency 'bump', '~> 0.10.0'
-  spec.add_development_dependency 'bundler', '~> 2.2', '>= 2.2.31'
+  spec.add_development_dependency 'bundler', '~> 2.6', '>= 2.6.5'
   spec.add_development_dependency 'byebug', '~> 11.1', '>= 11.1.3'
-  spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.6'
-  spec.add_development_dependency 'reek', '~> 6.0', '>= 6.0.6'
-  spec.add_development_dependency 'rspec', '~> 3.10'
-  spec.add_development_dependency 'rubocop', '~> 1.22', '>= 1.22.3'
-  spec.add_development_dependency 'rubocop-rake', '~> 0.6.0'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.6'
+  spec.add_development_dependency 'rake', '~> 13.2', '>= 13.2.1'
+  spec.add_development_dependency 'reek', '~> 6.4'
+  spec.add_development_dependency 'rspec', '~> 3.13'
+  spec.add_development_dependency 'rubocop', '~> 1.72', '>= 1.72.2'
+  spec.add_development_dependency 'rubocop-rake', '~> 0.7.1'
+  spec.add_development_dependency 'rubocop-rspec', '~> 3.5'
 end
