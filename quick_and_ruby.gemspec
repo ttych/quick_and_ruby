@@ -42,7 +42,8 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^#{spec.bindir}/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'ostruct', '~> 0.6' , '>= 0.6.1'
+  spec.add_dependency 'commander', '~> 5.0'
+  spec.add_dependency 'ostruct', '~> 0.6', '>= 0.6.1'
   spec.add_dependency 'webrick', '~> 1.9', '>= 1.9.1'
 
   spec.add_development_dependency 'bump', '~> 0.10'
