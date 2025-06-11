@@ -42,8 +42,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^#{spec.bindir}/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'commander', '~> 5.0'
+  spec.add_dependency 'gli', '~> 2.22', '>= 2.22.2'
+  # spec.add_dependency 'hexapdf', '~> 1.3'
   spec.add_dependency 'ostruct', '~> 0.6', '>= 0.6.1'
+  spec.add_dependency 'pdf-reader', '~> 2.14', '>= 2.14.1'
   spec.add_dependency 'webrick', '~> 1.9', '>= 1.9.1'
 
   spec.add_development_dependency 'bump', '~> 0.10'
@@ -55,4 +57,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 1.76', '>= 1.76.1'
   spec.add_development_dependency 'rubocop-rake', '~> 0.7', '>= 0.7.1'
   spec.add_development_dependency 'rubocop-rspec', '~> 3.6'
+  spec.add_development_dependency 'ruby-lsp', '~> 0.24'
+  spec.add_development_dependency 'ruby-lsp-reek', '~> 0.3', '>= 0.3.1'
+  spec.add_development_dependency 'ruby-lsp-rspec', '~> 0.1', '>= 0.1.25'
 end

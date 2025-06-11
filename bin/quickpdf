@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+
+require 'gli'
+require 'quick_and_ruby'
+require 'quick_and_ruby/pdf'
+
+class App
+  extend GLI::App
+
+  program_desc 'A quick PDF utility.'
+
+  version QuickAndRuby::VERSION
+
+  subcommand_option_handling :normal
+  arguments :strict
+
+  desc 'Extract links from a PDF document'
+  arg_name 'pdf_file [pdf_file2 ...]'
+  command:'extract-links' do |c|
+    c.desc 'URL schemes to extract (http, https, ftp, etc.). Can be specified multiple times'
+    c.flag [:s, :scheme], multiple: true, default_value: ['http', 'https']
+
+    c.action do |global_options, options, args|
+      raise GLI::BadCommandLine, "Missing required argument <PDF_FILE>" if args.empty?
+
+      schemes = options[:scheme].map(&:downcase)
+
+      error_count = 0
+      args.each do |pdf_filepath|
+        puts QuickAndRuby::Pdf::Document
+          .new(pdf_filepath)
+          .extract_links(schemes: schemes)
+          .compact
+      rescue StandardError => e
+        error_count += 1
+        puts "error: while processing #{pdf_filepath}: #{e}"
+      end
+      raise "error: #{error_count} errors while processing" if error_count.positive?
+    end
+  end
+
+  pre do |global,command,options,args|
+    true
+  end
+
+  post do |global,command,options,args|
+    true
+  end
+
+  on_error do |exception|
+    true
+  end
+end
+
+exit App.run(ARGV)
