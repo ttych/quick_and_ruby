@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/ttych/quick_and_ruby'
   spec.license       = 'MIT'
 
-  spec.required_ruby_version = '> 3.1'
+  spec.required_ruby_version = '> 3.2'
 
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = 'https://rubygems.org'
@@ -44,20 +44,21 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'gli', '~> 2.22', '>= 2.22.2'
   # spec.add_dependency 'hexapdf', '~> 1.3'
+  spec.add_dependency 'aws-sdk-s3', '~> 1.205'
   spec.add_dependency 'ostruct', '~> 0.6', '>= 0.6.1'
   spec.add_dependency 'pdf-reader', '~> 2.14', '>= 2.14.1'
   spec.add_dependency 'webrick', '~> 1.9', '>= 1.9.1'
 
   spec.add_development_dependency 'bump', '~> 0.10'
-  spec.add_development_dependency 'bundler', '~> 2.6', '>= 2.6.5'
-  spec.add_development_dependency 'byebug', '~> 11.1', '>= 11.1.3'
-  spec.add_development_dependency 'rake', '~> 13.3', '>= 13.3.0'
+  spec.add_development_dependency 'bundler', '~> 2.7', '>= 2.7.2'
+  spec.add_development_dependency 'byebug', '~> 12.0'
+  spec.add_development_dependency 'rake', '~> 13.3', '>= 13.3.1'
   spec.add_development_dependency 'reek', '~> 6.5'
-  spec.add_development_dependency 'rspec', '~> 3.13', '>= 3.13.1'
-  spec.add_development_dependency 'rubocop', '~> 1.76', '>= 1.76.1'
+  spec.add_development_dependency 'rspec', '~> 3.13', '>= 3.13.2'
+  spec.add_development_dependency 'rubocop', '~> 1.81', '>= 1.81.7'
   spec.add_development_dependency 'rubocop-rake', '~> 0.7', '>= 0.7.1'
-  spec.add_development_dependency 'rubocop-rspec', '~> 3.6'
-  spec.add_development_dependency 'ruby-lsp', '~> 0.24'
+  spec.add_development_dependency 'rubocop-rspec', '~> 3.8'
+  spec.add_development_dependency 'ruby-lsp', '~> 0.26', '>= 0.26.4'
   spec.add_development_dependency 'ruby-lsp-reek', '~> 0.3', '>= 0.3.1'
-  spec.add_development_dependency 'ruby-lsp-rspec', '~> 0.1', '>= 0.1.25'
+  spec.add_development_dependency 'ruby-lsp-rspec', '~> 0.1', '>= 0.1.28'
 end
