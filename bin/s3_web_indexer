@@ -2,27 +2,27 @@
 # frozen_string_literal: true
 
 require 'optparse'
-require 'quick_and_ruby/s3_web_indexer'
+require 'quick_and_ruby/s3'
 
 options = {
   path: '/',
-  recursivbe: false
+  nested: false
 }
 option_parser = OptionParser.new do |opt|
   opt.banner = 'Usage: s3_web_indexer [options]'
 
   opt.on('-b', '--bucket BUCKET', 'S3 bucket name') { |v| options[:bucket] = v }
-  opt.on('-u', '--url URL', 'S3 endpoint URL') { |v| options[:url] = v }
+  opt.on('-u', '--url URL', 'S3 endpoint URL') { |v| options[:endpoint_url] = v }
   opt.on('-a', '--access-key KEY', 'S3 access key') { |v| options[:access_key] = v }
   opt.on('-s', '--secret-key KEY', 'S3 secret access key') { |v| options[:secret_key] = v }
-  opt.on('-p', '--path PATH', 'Bucket path (prefix)') { |v| options[:path] = v }
-  opt.on('-r', '--recursive', 'Scan recursively') { |_v| options[:recursive] = true }
+  opt.on('-N', '--nested', 'All nested objects') { |_v| options[:nested] = true }
 end
 
 argv = ARGV.clone
 option_parser.parse!(argv)
 
-abort('Missing required arguments') unless options.values_at(:bucket, :url, :access_key,
-                                                             :secret_key, :path).all?
+abort('Missing required arguments') unless options.values_at(
+  :bucket, :endpoint_url, :access_key, :secret_key
+).all?
 
-exit QuickAndRuby::S3WebIndexer.new(options: options).index
+exit QuickAndRuby::S3::WebIndexer.new(**options).index(*argv, nested: options[:nested])

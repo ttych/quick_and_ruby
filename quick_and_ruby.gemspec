@@ -45,6 +45,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'gli', '~> 2.22', '>= 2.22.2'
   # spec.add_dependency 'hexapdf', '~> 1.3'
   spec.add_dependency 'aws-sdk-s3', '~> 1.205'
+  spec.add_dependency 'erb', '~> 6.0'
   spec.add_dependency 'ostruct', '~> 0.6', '>= 0.6.1'
   spec.add_dependency 'pdf-reader', '~> 2.14', '>= 2.14.1'
   spec.add_dependency 'webrick', '~> 1.9', '>= 1.9.1'
